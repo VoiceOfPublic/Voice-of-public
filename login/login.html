@@ -13,15 +13,22 @@
             <h3>Login</h3>
             <div class="data-entering-section">
                 <div class="email">
-                    <input type="email" name="email" placeholder="Email">
+                    <input type="email" name="email" placeholder="Email" data-email>
                 </div>
                 <div class="password"> 
-                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" data-password>
                 </div>    
             </div>
-            <button>Login</button>
+            <button data-login-btn>Login</button>
             <a href="">Sign Up here</a>
         </div>
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+    <script src="../Packages/firebase/firebase.js"></script>
+    <script src="./login.js"></script>
+
 </body>
 </html>
