@@ -22,8 +22,13 @@ function signInWithEmailAndPass(){
         userId = response.user.uid
         if(userId){
             addingDataToDB(userId)
+            redirectToMainPage("../../user-page/officer/officer.html")
         }
     })
+}
+
+function redirectToMainPage(path){
+    window.location.href=path
 }
 
 signInBtn.addEventListener('click',signInWithEmailAndPass)
