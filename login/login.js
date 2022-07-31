@@ -18,11 +18,13 @@ function loginWithEmailAndPass(){
         let flag=localStorage.getItem('userFlag')
         if(userId){
             alert("login successfully")
-            localStorage.setItem("id",userId)
+            
             if(flag==="true"){
                 redirectToMainPage("../user-page/public/public.html")
+                localStorage.setItem("publicId",userId)
             }else{
                 redirectToMainPage("../user-page/officer/officer.html")
+                localStorage.setItem("officerId",userId)
             }
         }
     })

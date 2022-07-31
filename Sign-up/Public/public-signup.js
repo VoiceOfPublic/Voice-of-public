@@ -20,7 +20,9 @@ function signInWithEmailAndPass(){
     auth.createUserWithEmailAndPassword(emailValue, passwordValue).then((response)=>{
         userId = response.user.uid
         if(userId){
+            localStorage.setItem('publicId',userId)
             addingDataToDB(userId)
+            alert("Registered successfull")
             redirectToMainPage("../../user-page/public/public.html")
         }
     })
@@ -39,7 +41,8 @@ function addingDataToDB(id){
         age:age.value,
         area:area.value,
         phoneNumber:phoneNumber.value,
-        aadharNumber:aadharNumber.value
+        aadharNumber:aadharNumber.value,
+        id:id
     })
 }
 

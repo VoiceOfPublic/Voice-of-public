@@ -26,6 +26,38 @@
 
 .profile{
     margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-details p{
+    margin-top: 1rem;
+}
+
+.logout{
+    margin-top: 5rem;
+    background: transparent;
+    width: 4rem;
+    height: 2rem;
+    border: 1px solid  black;
+    cursor: pointer;
+}
+
+.logout:hover{
+    transform: scale(1.1);
+}
+
+.profile-details{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile svg{
+    width: 9rem;
+    height: 10rem;
 }
 
 .right-container{
@@ -34,27 +66,29 @@
     position: relative;
     background-color: rgba(255, 255, 255, 0.363);
 }
-.content-view-container{
+.right-container .content-view-container{
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.363);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.right-container.active .content-view-container{
     display: none;
 }
 
 .content-container{
     width: 86%;
-    min-height: 15rem;
     background-color: white;
     border-radius: 1.2rem;
     border: 1px solid rgba(0, 0, 0, 0.39);
     margin-left: 7%;
     margin-top: 2.5rem;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.473);
-
 }
 
 .problem-name{
@@ -70,29 +104,28 @@
     line-height: 1.4rem;
 }
 
-.problem-definition > span{
-    margin-left: 1.5rem;
+.problem-def-span{
+    margin-left: 2rem;
 }
 
 .time-and-container{
     display: flex;
     flex-direction: row;
     align-items: center;
-    position: relative;
-    left: 68%;
-    top:3.8rem;
-    display: inline-block;
+    margin-left: 65%;
+    padding-bottom: 0.7rem;
+    margin-top: 1rem;
+    
 }
 
 .date{  
-    margin-left: 8.5rem;
-    margin-top: -1.13rem;
+    margin-left: 1rem;
 }
 
 .add-button{
-    position: relative;
+    position: fixed;
     left: 85%;
-    top: -3rem;
+    top: 80vh;
     width: 5rem;
     height: 5rem;
     border-radius: 50%;
@@ -108,7 +141,7 @@
     height: 3.5rem;
 }
 
-.content-add-container{
+.right-container .content-add-container{
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -116,11 +149,15 @@
     width: 90%;
     height: 80vh;
     background-color: white;
-    /* border: 1px solid black; */
     margin: 5% 5%;
     border-radius: 20px;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.555);
     box-shadow: inset 0px 0px 4px black;
+    display: none;
+}
+
+.right-container.active .content-add-container{
+    display: flex;
 }
 
 .name{
@@ -138,11 +175,22 @@
     display: flex;
     flex-direction: row;
     margin-left: 3%;
-    margin-top: 0rem;
+    margin-top: 2rem;
 }
 
 .problem-dropdown{
+    width: 40%;
     margin-left: .5rem;
+}
+
+.drop-click{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.problem-dropdown .options{
     margin-top: .4rem;
     width: 20%;
     height: 5rem;
@@ -151,9 +199,16 @@
     align-items: center;
     border: 1px solid black;
     overflow-y:scroll ;
+    display: none;
+    position: absolute;
 }
 
-.problem-dropdown::-webkit-scrollbar {
+.problem-dropdown.active .options{
+    display: flex;
+}
+
+
+::-webkit-scrollbar {
     width: 4px;
 }
 
@@ -164,13 +219,15 @@
 
 .option{
     width: 100%;
-    height: 1rem;
+    height: 1.5rem;
     padding: .5rem 0;
     border-bottom: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     cursor: pointer;
+}
+
+.option p{
+    margin-left: .5rem;
+    margin-bottom: .5rem;
 }
 
 .input-container{
