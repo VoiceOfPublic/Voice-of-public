@@ -22,8 +22,15 @@ function signInWithEmailAndPass(){
         userId = response.user.uid
         if(userId){
             addingDataToDB(userId)
+            localStorage.setItem('officerId',userId)
+            alert("Registered successfull")
+            redirectToMainPage("../../user-page/officer/officer.html")
         }
     })
+}
+
+function redirectToMainPage(path){
+    window.location.href=path
 }
 
 signInBtn.addEventListener('click',signInWithEmailAndPass)
@@ -36,7 +43,8 @@ function addingDataToDB(id){
         area:area.value,
         officerId:officerId.value,
         phoneNumber:phoneNumber.value,
-        aadharNumber:aadharNumber.value
+        aadharNumber:aadharNumber.value,
+        id:id
     })
 }
 
