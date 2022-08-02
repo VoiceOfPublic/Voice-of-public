@@ -49,7 +49,7 @@ retrievDataFromDb(id)
 
 // function for retriwving data from db
 function retrievDataFromDb(id){
-
+    
     db.ref(`users/public/${id}`).on('value',(snap)=>{
         
     nameText.innerText=snap.val().name
