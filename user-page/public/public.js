@@ -19,7 +19,10 @@ let dropParent=document.querySelector('[data-drop-parent]')
 let problemText=document.querySelector('[data-problem-text]')
 let mailText=document.querySelector('[data-email]')
 let phoneText=document.querySelector('[data-phone]')
+let panchatText=document.querySelector('[data-panchayat]')
+let aadharText=document.querySelector('[data-aadhar]')
 let logOutBtn=document.querySelector('[data-logout]')
+let circleParent=document.querySelector('[data-circle-parent]')
 
 // Switiching b/w add section and view section
 addData.addEventListener('click',addClass) 
@@ -32,6 +35,8 @@ function addClass(){
 dropClick.addEventListener('click',()=>{
     dropParent.classList.toggle('active')
 })
+
+
 
 let months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 let dateObj =new Date()
@@ -50,6 +55,8 @@ function retrievDataFromDb(id){
     nameText.innerText=snap.val().name
     mailText.innerText=snap.val().email
     phoneText.innerText=snap.val().phoneNumber
+    aadharText.innerText=snap.val().aadharNumber
+    panchatText.innerText=snap.val().area
 
     let arraySnap=Object.values(snap.val().problem)
     arraySnap.forEach(arrayData=>{
@@ -66,14 +73,17 @@ function retrievDataFromDb(id){
         statusText.innerText=arrayData.status
 
         templateParent.appendChild(templateData)
-    }) 
+    })
+    parentDiv.classList.add('animation')
   })
+  
 }
 
 option.forEach((data)=>{
     data.addEventListener('click',()=>{
         problem=data.innerText
         problemText.innerText=data.innerText
+        dropParent.classList.remove('active')
     })
 })
 
@@ -95,7 +105,7 @@ function  setProblemStructure(){
             problemName:problem,
             definition:problemDefinition.value,
             date:currentDate,
-            status:"accepted"
+            status:"pending"
         }
         arrayData=Object.values(data)
         arrayData[arrayData.length]=problemObj
@@ -106,7 +116,7 @@ function  setProblemStructure(){
             problemName:problem,
             definition:problemDefinition.value,
             date:currentDate,
-            status:"accepted"
+            status:"pending"
         }]
         return problemObj
     }
@@ -126,3 +136,4 @@ logOutBtn.addEventListener('click',()=>{
     localStorage.clear()
     window.location.href="../../index.html"
 })
+

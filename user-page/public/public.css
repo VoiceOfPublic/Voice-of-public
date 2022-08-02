@@ -18,7 +18,7 @@
     width: 20%;
     height: 100vh;
     background-color: white;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.808);
+    box-shadow: 0 8px 16px rgba(113, 218, 250, 0.87);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +37,7 @@
 }
 
 .logout{
-    margin-top: 5rem;
+    margin-top: 3rem;
     background: transparent;
     width: 4rem;
     height: 2rem;
@@ -53,6 +53,7 @@
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
+    font-size: .8rem;
 }
 
 .profile svg{
@@ -64,7 +65,7 @@
     width: 80%;
     height: 100vh;
     position: relative;
-    background-color: rgba(255, 255, 255, 0.363);
+    background:linear-gradient(150deg,rgba(196,240,253,0.404),rgba(255, 255, 255, 0.404));
 }
 .right-container .content-view-container{
     position: absolute;
@@ -72,14 +73,18 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.363);
+    background:linear-gradient(120deg,rgba(215, 222, 224, 0.404),rgba(255, 255, 255, 0.404));
     overflow-y: scroll;
     overflow-x: hidden;
+    opacity: 0;
 }
-
+.right-container.animation .content-view-container{
+    opacity: 1;
+}
 .right-container.active .content-view-container{
     display: none;
 }
+
 
 .content-container{
     width: 86%;
@@ -134,6 +139,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .add-button img{
@@ -253,6 +259,54 @@
     color: white;
     font-size: 1.1rem;
     position: relative;
-    left: 69%;
-    top: -.7rem;
+    left: 73%;
+    top: -3rem;
+    cursor: pointer;
+    opacity: .8;
+}
+
+.content-add-container button:hover{
+    opacity: 1;
+    border: 1px solid black;
+}
+
+.right-container .loading-animation{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-container.animation .loading-animation{
+    display: none;
+}
+
+.circle{
+    width: 4rem;
+    height: 4rem;
+    border:4px solid white ;
+    border-radius: 50%;
+    border-left: 4px solid  rgb(0, 247, 255);
+    animation: rotateBorder 1s linear infinite;
+}
+
+@keyframes rotateBorder{
+    0%{
+        border-left: 4px solid  rgb(0, 247, 255);
+    }
+    25%{
+        border-left: 4px solid  rgb(0, 110, 255);
+    }
+    50%{
+        border-left: 4px solid  rgb(38, 0, 255);
+    }
+    75%{
+        border-left: 4px solid  rgb(255, 0, 149);
+    }
+    100%{
+        border-left: 4px solid  rgb(0, 102, 255);
+        transform: rotate(360deg);
+    }
 }

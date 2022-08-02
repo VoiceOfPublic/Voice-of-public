@@ -27,6 +27,8 @@ function loginWithEmailAndPass(){
                 localStorage.setItem("officerId",userId)
             }
         }
+    }).catch(error=>{
+        alert(error.message)
     })
 }
 

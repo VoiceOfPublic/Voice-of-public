@@ -10,7 +10,11 @@ let templateComponent=document.querySelector('[data-template]')
 let nameText=document.querySelector('[data-name]')
 let mailText=document.querySelector('[data-email]')
 let phoneText=document.querySelector('[data-phone]')
+let panchayatText=document.querySelector('[data-panchayat]')
+let idText=document.querySelector('[data-id]')
+let aadharText=document.querySelector('[data-aadhar]')
 let logOutBtn=document.querySelector('[data-logout]')
+let animationParent=document.querySelector('[data-animation-parent]')
 
 let officerArea
 
@@ -22,6 +26,9 @@ function retrievDataFromDb(id){
         nameText.innerText=snap.val().name
         mailText.innerText=snap.val().email
         phoneText.innerText=snap.val().phoneNumber
+        panchayatText.innerText=officerArea
+        aadharText.innerText=snap.val().aadharNumber
+        idText.innerText=snap.val().officerId
     })
     db.ref(`users/public`).on('value',(snap)=>{
         let data=Object.values(snap.val())
@@ -34,8 +41,8 @@ function retrievDataFromDb(id){
                     })
                 }
             }))
+            animationParent.classList.add('animation')
         }
-        
     })
 }
 
@@ -46,20 +53,20 @@ function blahblag(data){
     template.querySelector('[data-date-text]').innerText=data.date
     let option=template.querySelectorAll(".option")
     let statusText=template.querySelector('[data-status-text]')
+    let dropBtn=template.querySelector('[data-drop-click]')
+    let dropParent=template.querySelector('[data-drop-parent]')
     templateParent.appendChild(template)
-
+    statusText.innerText=data.status
     option.forEach((element) => {
         element.addEventListener('click',()=>{
             statusText.innerText=element.innerText
+            dropParent.classList.remove('active')
         })
     });
 
-    // let dropBtn=template.querySelector('[data-drop-click]')
-    // let dropParent=template.querySelector('[data-drop-parent]')
-
-    // dropBtn.addEventListener('click',()=>{
-    //     dropParent.classList.toggle('active')
-    // })
+    dropBtn.addEventListener('click',()=>{
+        dropParent.classList.toggle('active')
+    })
 
     
     // window.addEventListener('mouseup',(e)=>{
