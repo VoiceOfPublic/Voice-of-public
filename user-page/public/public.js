@@ -57,9 +57,9 @@ function retrievDataFromDb(id){
     phoneText.innerText=snap.val().phoneNumber
     aadharText.innerText=snap.val().aadharNumber
     panchatText.innerText=snap.val().area
-
-    let arraySnap=Object.values(snap.val().problem)
-    arraySnap.forEach(arrayData=>{
+    if(snap.val().problem){
+        let arraySnap=Object.values(snap.val().problem)
+        arraySnap.forEach(arrayData=>{
 
         let templateData=template.content.cloneNode(true)
         let problemName=templateData.querySelector('[data-problem-name]')
@@ -74,7 +74,11 @@ function retrievDataFromDb(id){
 
         templateParent.appendChild(templateData)
     })
-    parentDiv.classList.add('animation')
+        parentDiv.classList.add('animation')
+    }else{
+        parentDiv.classList.add('animation')
+    }
+    
   })
   
 }
