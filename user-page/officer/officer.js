@@ -35,22 +35,22 @@ function retrievDataFromDb(id){
         let data=Object.values(snap.val())
         if(officerArea){
             data.forEach((cred=>{
-                if(cred.area===officerArea){
+                if(cred.area===officerArea&&cred.problem){
                     let transferData=Object.values(cred.problem)
                     let userId=cred.id
                     transferData.forEach((resData,i)=>{
-                         blahblag(resData,userId,i) 
+                        addingToDoc(resData,userId,i) 
                     })
+                }else{
+                    animationParent.classList.add('animation')
                 }  
             }))
-            
             animationParent.classList.add('animation')
         }
-        
     })
 }
 
-function blahblag(data,userId,i){
+function addingToDoc(data,userId,i){
     let template=templateComponent.content.cloneNode(true)
     template.querySelector('[data-problem-text]').innerText=data.problemName
     template.querySelector('[data-problem-def-text]').innerText=data.definition
